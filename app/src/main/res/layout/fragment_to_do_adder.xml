@@ -38,4 +38,9 @@
         android:id="@+id/cb"
         />
 
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
