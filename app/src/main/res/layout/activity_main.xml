@@ -9,6 +9,13 @@
     android:weightSum="1"
     tools:context="com.sargent.mark.todolist.MainActivity">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:spinnerMode="dialog" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -23,9 +30,9 @@
         android:text="Add Item"
         android:src="@drawable/ic_add_black_48dp"/>
 
-    <Spinner
-        android:id="@+id/planets_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+    <!--<Spinner-->
+        <!--android:id="@+id/planets_spinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content" />-->
 
 </LinearLayout>

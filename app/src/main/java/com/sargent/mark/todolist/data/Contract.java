@@ -14,7 +14,14 @@ public class Contract {
         public static final String COLUMN_NAME_DESCRIPTION = "description";
         public static final String COLUMN_NAME_DUE_DATE = "duedate";
 
-        //0 is false 1 is true
-//        public static final String COLUMN_NAME_CATEGORY = "category" ;
+        //0 is FALSE 1 is TRUE
+        public static final String COLUMN_NAME_DONE = "done" ;
+        //CREATING CATEGORY STRING
+        public static final String COLUMN_NAME_CATEGORY = "category" ;
+
+
+        //CREATING A TESTING COLUMN
+        public static final String COLUMN_NAME_DESCRIPTION2 = "description2";
+
     }
 }

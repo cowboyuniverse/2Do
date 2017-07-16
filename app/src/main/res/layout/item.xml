@@ -4,6 +4,17 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
+    <!--this will be right beside the textview layout_torightOf using id-->
+
+    <!--creating a textview for the spinner-->
+    <!--<TextView-->
+        <!--android:id="@+id/country"-->
+        <!--android:text="@string/select_country"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft = "true"-->
+        <!--/>-->
+
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
@@ -11,6 +22,12 @@
         android:textSize="20dp"
         android:text="To do description"/>
 
+    <TextView
+        android:id="@+id/description2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="To do description2"/>
 
     <!--<TextView-->
         <!--android:id="@+id/descriptions"-->
@@ -43,5 +60,12 @@
         <!--android:layout_alignParentRight="true"-->
         <!--android:focusable="false"  />-->
 
+
+    <!--<Spinner-->
+        <!--android:id="@+id/spinner_category_items"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--/>-->
 
 </LinearLayout>

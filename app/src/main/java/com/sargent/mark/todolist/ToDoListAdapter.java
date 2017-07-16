@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.sargent.mark.todolist.data.Contract;
@@ -50,8 +52,9 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         return cursor.getCount();
     }
 
+    //added category
     public interface ItemClickListener {
-        void onItemClick(int pos, String description, String duedate, long id);
+        void onItemClick(int pos, String description, String duedate, String Category, long id);
     }
 
     public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
@@ -75,9 +78,10 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         TextView descr2;
         TextView due;
         CheckBox checkbox;
+        Spinner category_spinner;
         String duedate;
         String description;
-//        String category;
+        String category;
 //        String check;
         long id;
 
@@ -90,6 +94,21 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 //            inside item.xml variable and using the empty object CheckBox
             checkbox = (CheckBox) view.findViewById(R.id.checkBox);
             due = (TextView) view.findViewById(R.id.dueDate);
+
+            category_spinner = (Spinner) view.findViewById(R.id.spinner); //add category
+//            category_spinner.setOnItemSelectedListener(this);
+
+            category_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
+
+
             view.setOnClickListener(this);
         }
 
@@ -106,13 +125,14 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
             descr.setText(description);
             due.setText(duedate);
+            category_spinner.setSelection(0);
             holder.itemView.setTag(id);
         }
 
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            listener.onItemClick(pos, description, duedate, id);
+            listener.onItemClick(pos, description, duedate, category_spinner.getSelectedItem().toString(),id);
         }
     }
 
