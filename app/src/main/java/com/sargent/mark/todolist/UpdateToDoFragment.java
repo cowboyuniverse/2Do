@@ -6,12 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import java.util.Calendar;
 
@@ -20,7 +17,7 @@ import java.util.Calendar;
  */
 
 public class UpdateToDoFragment extends DialogFragment {
-    private Spinner category_spinner;
+
     private EditText toDo;
     private DatePicker dp;
     private Button add;
@@ -30,7 +27,7 @@ public class UpdateToDoFragment extends DialogFragment {
 
     public UpdateToDoFragment(){}
 
-    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, String category,long id) {
+    public static UpdateToDoFragment newInstance(int year, int month, int day, String descrpition, long id) {
         UpdateToDoFragment f = new UpdateToDoFragment();
 
         // Supply num input as an argument.
@@ -40,7 +37,6 @@ public class UpdateToDoFragment extends DialogFragment {
         args.putInt("day", day);
         args.putLong("id", id);
         args.putString("description", descrpition);
-        args.putString("category", category);
 
         f.setArguments(args);
 
@@ -49,7 +45,7 @@ public class UpdateToDoFragment extends DialogFragment {
 
     //To have a way for the activity to get the data from the dialog
     public interface OnUpdateDialogCloseListener {
-        void closeUpdateDialog(int year, int month, int day, String description,String category, long id);
+        void closeUpdateDialog(int year, int month, int day, String description, long id);
     }
 
     @Override
@@ -68,39 +64,13 @@ public class UpdateToDoFragment extends DialogFragment {
 
         toDo.setText(description);
 
-
-
-        //creating Spinner
-        ArrayAdapter<CharSequence> arrayAdapter;
-        //initialize the spinner object
-        category_spinner = (Spinner) view.findViewById(R.id.spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        arrayAdapter = ArrayAdapter.createFromResource(view.getContext(), R.array.category_array, android.R.layout.simple_spinner_item);
-
-        // Specify the layout to use when the list of choices appears
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        category_spinner.setAdapter(arrayAdapter);
-
-        category_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-
-
         add.setText("Update");
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                 Log.d(TAG, "id: " + id);
-                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), category_spinner.getSelectedItem().toString(), id);
+                activity.closeUpdateDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), id);
                 UpdateToDoFragment.this.dismiss();
             }
         });

@@ -9,7 +9,6 @@ public class ToDoItem {
     private String dueDate;
     private String category;
 
-//    private String description2;
 
     public ToDoItem(String description, String dueDate, String category) {
         this.description = description;
@@ -22,11 +21,6 @@ public class ToDoItem {
         this.dueDate = dueDate;
     }
 
-//    public ToDoItem(String description, String dueDate, String description2) {
-//        this.description = description;
-//        this.dueDate = dueDate;
-//        this.description2 = description2;
-//    }
 
 
     public String getDescription() {
@@ -36,14 +30,6 @@ public class ToDoItem {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public String getDescription2() {
-//        return description2;
-//    }
-//
-//    public void setDescription2(String description2) {
-//        this.description2 = description2;
-//    }
 
 
     public String getDueDate() {
