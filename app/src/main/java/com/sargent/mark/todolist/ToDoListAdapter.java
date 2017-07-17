@@ -96,17 +96,25 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             due = (TextView) view.findViewById(R.id.dueDate);
 
             category_spinner = (Spinner) view.findViewById(R.id.spinner); //add category
-//            category_spinner.setOnItemSelectedListener(this);
 
-            category_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                }
+            String quantity = String.valueOf(category_spinner.getSelectedItem());
+            int spinnerValue=category_spinner.getSelectedItemPosition();
+            category_spinner.setSelection(spinnerValue);
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                }
-            });
+
+            int qualityValue=category_spinner.getSelectedItemPosition();
+
+//                        category_spinner.setOnItemSelectedListener(this);
+//            category_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                @Override
+//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                    parent.getItemAtPosition(position);
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> parent) {
+//                }
+//            });
 
 
             view.setOnClickListener(this);
@@ -125,7 +133,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
             descr.setText(description);
             due.setText(duedate);
-            category_spinner.setSelection(0);
+//            category_spinner.setSelection(category);
             holder.itemView.setTag(id);
         }
 

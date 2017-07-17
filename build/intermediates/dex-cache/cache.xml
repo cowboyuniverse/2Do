@@ -12,12 +12,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/cowboyuniverse/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.9/f7b520c458572890807d143670c9b24f4de90897/joda-time-2.9.9.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f7b520c458572890807d143670c9b24f4de90897">
+        <dex dex="/home/cowboyuniverse/Workspace/LearningJournal/Android/CS5540/ToDoList/app/build/intermediates/pre-dexed/debug/joda-time-2.9.9_20e7c76c3236cac806c4149c7f71dedc0a4dd449.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/cowboyuniverse/.android/build-cache/56860365b4ed4b9605c8e36a1064e2c7fb27ab38/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
         <dex dex="/home/cowboyuniverse/Workspace/LearningJournal/Android/CS5540/Class_Examples_2/Android-Class-Examples/ToDoList/app/build/intermediates/pre-dexed/debug/classes_b602bbcf79ffaf4ba543e27c59ff38d1b32a5e0d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/cowboyuniverse/.android/build-cache/3e9b7bf815a09ec5807a44a872973c9b5f76e5f0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="59abd104a093ffacde70cbe94a5472211e1c9011">
+        <dex dex="/home/cowboyuniverse/Workspace/LearningJournal/Android/CS5540/ToDoList/app/build/intermediates/pre-dexed/debug/classes_d31f0d7819c6ca827997ee35277ac1469058313f.jar" />
     </item>
 
 </items>
