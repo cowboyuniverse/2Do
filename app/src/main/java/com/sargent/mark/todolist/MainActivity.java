@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
     public String formatDate(int year, int month, int day) {
-        return String.format("%d-%d-%d", year, month, day);
+        return String.format("%04d-%02d-%02d", year, month +1, day);
     }
 
 
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         );
     }
 
+    //added
     private long addToDo(SQLiteDatabase db, String description, String duedate,String category) {
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
+    //added
     private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, String category,long id){
 
         String duedate = formatDate(year, month - 1, day);

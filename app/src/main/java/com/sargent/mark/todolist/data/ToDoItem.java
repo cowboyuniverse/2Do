@@ -8,9 +8,16 @@ public class ToDoItem {
     private String description;
     private String dueDate;
     private String category;
+    private int done;
 
+    public ToDoItem(String description, String dueDate, String category, int done ) {
+        this.description = description;
+        this.dueDate = dueDate;
+        this.category = category;
+        this.done = done;
+    }
 
-    public ToDoItem(String description, String dueDate, String category) {
+    public ToDoItem(String description, String dueDate, String category ) {
         this.description = description;
         this.dueDate = dueDate;
         this.category = category;
@@ -21,7 +28,13 @@ public class ToDoItem {
         this.dueDate = dueDate;
     }
 
+    public int isDone() {
+        return done;
+    }
 
+    public void setDone(int done) {
+        this.done = done;
+    }
 
     public String getDescription() {
         return description;

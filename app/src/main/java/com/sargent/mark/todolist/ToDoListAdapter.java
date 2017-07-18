@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sargent.mark.todolist.data.Contract;
@@ -67,9 +68,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         TextView descr;
         TextView due;
         TextView cat;
+        CheckBox cb;
         String duedate;
         String description;
         String category;
+        int done;
         long id;
 
 

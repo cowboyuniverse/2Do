@@ -27,19 +27,26 @@ public class DBHelper extends SQLiteOpenHelper{
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
                 Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE, " +
                 Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL " +
+//                Contract.TABLE_TODO.COLUMN_NAME_DONE + " INTEGER DEFAULT 0" +
                 "); ";
 
         Log.d(TAG, "Create table SQL: " + queryString);
         db.execSQL(queryString);
 
-//        db.execSQL("INSERT into todoitems(description, duedate) " +
-//                "values('Eat Ramen with Jessica','2017-6-21')");
 
-//                db.execSQL("INSERT into todoitems(description, duedate) " +
-//                "values('Eat Ramen with Jessica','2017-6-21', 'description2')");
-
+//        Testing data
         db.execSQL("INSERT into todoitems(description, duedate, category) " +
-                "values('Finish Android HW3','2017-6-16', 'School')");
+                "values('Finish Android HW3','2017-7-19', 'School')");
+
+//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
+//                "values('Eat Ramen with Jessica','2017-1-16', 'Personal', 0)");
+//
+//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
+//                "values('Recuit Aquaman for JL ','2017-2-16', 'Work', 0)");
+//
+//
+//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
+//                "values('Run with the Bulls','2017-7-16', 'Uncategorized', 0)");
     }
 
 
