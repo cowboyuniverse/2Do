@@ -25,21 +25,21 @@ public class DBHelper extends SQLiteOpenHelper{
         String queryString = "CREATE TABLE " + Contract.TABLE_TODO.TABLE_NAME + " ("+
                 Contract.TABLE_TODO._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
-                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE " +
-//                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL, " +
+                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE, " +
+                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL " +
                 "); ";
 
         Log.d(TAG, "Create table SQL: " + queryString);
         db.execSQL(queryString);
 
-        db.execSQL("INSERT into todoitems(description, duedate) " +
-                "values('Eat Ramen with Jessica','2017-6-21')");
+//        db.execSQL("INSERT into todoitems(description, duedate) " +
+//                "values('Eat Ramen with Jessica','2017-6-21')");
 
 //                db.execSQL("INSERT into todoitems(description, duedate) " +
 //                "values('Eat Ramen with Jessica','2017-6-21', 'description2')");
 
-//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
-//                "values('Eat Ramen with Jessica','2017-6-16', 'Personal')");
+        db.execSQL("INSERT into todoitems(description, duedate, category) " +
+                "values('Eat Ramen with Jessica','2017-6-16', 'Personal')");
     }
 
 

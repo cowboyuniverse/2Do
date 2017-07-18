@@ -23,7 +23,7 @@
         android:text="To do description"/>
 
     <TextView
-        android:id="@+id/description2"
+        android:id="@+id/category_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
