@@ -16,6 +16,7 @@ public class Contract {
 
         //0 is FALSE 1 is TRUE
         public static final String COLUMN_NAME_DONE = "done" ;
+
         //CREATING CATEGORY STRING
         public static final String COLUMN_NAME_CATEGORY = "category" ;
 

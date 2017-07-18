@@ -74,11 +74,10 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
                 FragmentManager fm = getSupportFragmentManager();
 
-                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, id);
+                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, category,id);
                 frag.show(fm, "updatetodofragment");
             }
         });
-
         rv.setAdapter(adapter);
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -136,20 +135,35 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
-    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, long id){
+    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, String category,long id){
 
-        String duedate = formatDate(year, month, day);
+        String duedate = formatDate(year, month - 1, day);
 
         ContentValues cv = new ContentValues();
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
-
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY, category);
         return db.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
     }
 
+
     @Override
-    public void closeUpdateDialog(int year, int month, int day, String description, long id) {
-        updateToDo(db, year, month, day, description, id);
+    public void closeUpdateDialog(int year, int month, int day, String description,String category, long id) {
+        updateToDo(db, year, month, day, description,category, id);
         adapter.swapCursor(getAllItems(db));
     }
 }
+
+//
+//      2. TODO  6pts A category field where user selects from 4 preset categories using a Spinner (see https://developer.android.com/guide/topics/ui/controls/spinner.html for details on how to implement)
+//
+//      3. TODO  6pts The ability to show only items from the category selected (this control should be in the main activity's menu. The default will be to show all the items)
+//
+//      4. TODO  4pts Include comments for all the changes and additions you make to the software explaining in detail what you are doing.
+//
+//      5. TODO  Extra Credit (up to 5pts) Make a beautiful UI
+//
+//      6. TODO  You will need to change the schema for the database, but you shouldn't need more than one table. You will also have to implement new query functions.
+//
+//      7. TODO  Paste your homework's Github link below.
+

@@ -39,7 +39,7 @@ public class DBHelper extends SQLiteOpenHelper{
 //                "values('Eat Ramen with Jessica','2017-6-21', 'description2')");
 
         db.execSQL("INSERT into todoitems(description, duedate, category) " +
-                "values('Eat Ramen with Jessica','2017-6-16', 'Personal')");
+                "values('Finish Android HW3','2017-6-16', 'School')");
     }
 
 
@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper{
 }
 
 
-//2017-6-16
+
 //    public static final String TABLE_NAME = "todoitems";
 //    public static final String COLUMN_NAME_DESCRIPTION = "description";
 //    public static final String COLUMN_NAME_DUE_DATE = "duedate";
