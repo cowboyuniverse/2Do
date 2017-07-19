@@ -12,6 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -45,6 +48,116 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         });
         rv = (RecyclerView) findViewById(R.id.recyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    // https://developer.android.com/guide/topics/resources/menu-resource.html
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+
+//  inspired from android api https://developer.android.com/guide/topics/ui/menus.html
+// taken from the id of menu.xml, getting the user's input and running sql script
+// idea dn use of swapcursor() is inspired by android api also the code retreiving data is in api
+//    https://developer.android.com/guide/components/loaders.html
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.all:
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                }
+                else {
+                    item.setChecked(true);
+                    cursor = getAllItems(db);
+                    adapter.swapCursor(cursor);
+                }
+                return true;
+            case R.id.personal:
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                }
+                else {
+                    item.setChecked(true);
+                    cursor = getCategory(db, "Personal");
+                    adapter.swapCursor(cursor);
+                }
+                return true;
+            case R.id.work:
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                }
+                else {
+                    item.setChecked(true);
+                    cursor = getCategory(db, "Work");
+                    adapter.swapCursor(cursor);
+                }
+                return true;
+            case R.id.school:
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                }
+                else {
+                    item.setChecked(true);
+                    cursor = getCategory(db, "School");
+                    adapter.swapCursor(cursor);
+
+                }
+                return true;
+            case R.id.uncategorized:
+                if (item.isChecked()) {
+                    item.setChecked(false);
+                }
+                else {
+                    item.setChecked(true);
+                    cursor = getCategory(db, "Uncategorized");
+                    adapter.swapCursor(cursor);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+//http://hmkcode.com/android-simple-sqlite-database-tutorial/
+// Cursor cursor = db.query(TABLE_BOOKS, // a. table
+//                              COLUMNS, // b. column names
+//                            " id = ?", // c. selections
+//  new String[] { String.valueOf(id) }, // d. selections args
+//                                 null, // e. group by
+//                                 null, // f. having
+//                                 null, // g. order by
+//                                null); // h. limit
+
+    private Cursor getAllItems(SQLiteDatabase db) {
+        return db.query(
+                Contract.TABLE_TODO.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE
+        );
+    }
+
+// Getting query using cusor adapter for the switch statement.
+// http://hmkcode.com/android-simple-sqlite-database-tutorial/
+    private Cursor getCategory(SQLiteDatabase db, String category) {
+        String selections = Contract.TABLE_TODO.COLUMN_NAME_CATEGORY  + "=?";
+        String [] selections_args = new String[] { category };
+        return  db.query(
+                Contract.TABLE_TODO.TABLE_NAME,
+                null,
+                selections,
+                selections_args,
+                null,
+                null,
+                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE
+        );
     }
 
     @Override
@@ -109,18 +222,6 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
     }
 
 
-
-    private Cursor getAllItems(SQLiteDatabase db) {
-        return db.query(
-                Contract.TABLE_TODO.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE
-        );
-    }
 
     //added
     private long addToDo(SQLiteDatabase db, String description, String duedate,String category) {
