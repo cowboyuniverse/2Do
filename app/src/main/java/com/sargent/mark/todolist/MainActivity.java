@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         adapter = new ToDoListAdapter(cursor, new ToDoListAdapter.ItemClickListener() {
 
             @Override
-            public void onItemClick(int pos, String description, String duedate,String category, long id) {
+            public void onItemClick(int pos, String description, String duedate,String category, boolean isChecked, long id) {
                 Log.d(TAG, "item click id: " + id);
                 String[] dateInfo = duedate.split("-");
                 int year = Integer.parseInt(dateInfo[0].replaceAll("\\s",""));
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
                 FragmentManager fm = getSupportFragmentManager();
 
-                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, category,id);
+                UpdateToDoFragment frag = UpdateToDoFragment.newInstance(year, month, day, description, category, isChecked, id);
                 frag.show(fm, "updatetodofragment");
             }
         });
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
 
 
     //added
-    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, String category,long id){
+    private int updateToDo(SQLiteDatabase db, int year, int month, int day, String description, String category, boolean isChecked, long id){
 
         String duedate = formatDate(year, month - 1, day);
 
@@ -145,13 +145,14 @@ public class MainActivity extends AppCompatActivity implements AddToDoFragment.O
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION, description);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE, duedate);
         cv.put(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY, category);
+        cv.put(Contract.TABLE_TODO.COLUMN_NAME_ISCHECKED, isChecked);
         return db.update(Contract.TABLE_TODO.TABLE_NAME, cv, Contract.TABLE_TODO._ID + "=" + id, null);
     }
 
 
     @Override
-    public void closeUpdateDialog(int year, int month, int day, String description,String category, long id) {
-        updateToDo(db, year, month, day, description,category, id);
+    public void closeUpdateDialog(int year, int month, int day, String description,String category, boolean isChecked, long id) {
+        updateToDo(db, year, month, day, description,category,isChecked,  id);
         adapter.swapCursor(getAllItems(db));
     }
 }

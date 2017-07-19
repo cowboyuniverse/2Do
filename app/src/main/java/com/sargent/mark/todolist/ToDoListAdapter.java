@@ -47,7 +47,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
     }
 
     public interface ItemClickListener {
-        void onItemClick(int pos, String description, String duedate, String category, long id);
+        void onItemClick(int pos, String description, String duedate, String category, boolean isChecked, long id);
     }
 
     public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
@@ -72,7 +72,8 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         String duedate;
         String description;
         String category;
-        int done;
+        boolean isChecked;
+        int checkInt;
         long id;
 
 
@@ -80,6 +81,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             super(view);
             descr = (TextView) view.findViewById(R.id.description);
             due = (TextView) view.findViewById(R.id.dueDate);
+            cb = (CheckBox) view.findViewById(R.id.checkBox);
 
 //            creating a textview for category
             cat = (TextView) view.findViewById(R.id.category_textview);
@@ -94,16 +96,28 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
             category = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY));
+            isChecked = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_ISCHECKED)) > 0;
+//            isChecked = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_ISCHECKED));
             descr.setText(description);
             due.setText(duedate);
             cat.setText(category);
+
+            if (cb.isChecked()) {
+                cb.setChecked(true);
+                checkInt = 1;
+            }
+            else {
+                cb.setChecked(false);
+                checkInt = 0;
+            }
+
             holder.itemView.setTag(id);
         }
 
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            listener.onItemClick(pos, description, duedate, category, id);
+            listener.onItemClick(pos, description, duedate, category, isChecked, id);
         }
     }
 

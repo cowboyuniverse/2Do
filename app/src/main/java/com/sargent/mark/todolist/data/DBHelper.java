@@ -26,8 +26,8 @@ public class DBHelper extends SQLiteOpenHelper{
                 Contract.TABLE_TODO._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
                 Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE, " +
-                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL " +
-//                Contract.TABLE_TODO.COLUMN_NAME_DONE + " INTEGER DEFAULT 0" +
+                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL,, " +
+//                Contract.TABLE_TODO.COLUMN_NAME_ISCHECKED + " INTEGER DEFAULT 0" +
                 "); ";
 
         Log.d(TAG, "Create table SQL: " + queryString);
@@ -35,8 +35,8 @@ public class DBHelper extends SQLiteOpenHelper{
 
 
 //        Testing data
-        db.execSQL("INSERT into todoitems(description, duedate, category) " +
-                "values('Finish Android HW3','2017-7-19', 'School')");
+//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
+//                "values('Finish Android HW3','2017-7-19', 'School')");
 
 //        db.execSQL("INSERT into todoitems(description, duedate, category) " +
 //                "values('Eat Ramen with Jessica','2017-1-16', 'Personal', 0)");

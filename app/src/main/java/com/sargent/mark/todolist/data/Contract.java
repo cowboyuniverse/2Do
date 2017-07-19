@@ -15,7 +15,7 @@ public class Contract {
         public static final String COLUMN_NAME_DUE_DATE = "duedate";
 
         //0 is FALSE 1 is TRUE
-        public static final String COLUMN_NAME_DONE = "done" ;
+        public static final String COLUMN_NAME_ISCHECKED = "isChecked" ;
 
         //CREATING CATEGORY STRING
         public static final String COLUMN_NAME_CATEGORY = "category" ;

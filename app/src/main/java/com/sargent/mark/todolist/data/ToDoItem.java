@@ -8,9 +8,9 @@ public class ToDoItem {
     private String description;
     private String dueDate;
     private String category;
-    private int done;
+    private boolean done;
 
-    public ToDoItem(String description, String dueDate, String category, int done ) {
+    public ToDoItem(String description, String dueDate, String category, boolean done ) {
         this.description = description;
         this.dueDate = dueDate;
         this.category = category;
@@ -28,11 +28,11 @@ public class ToDoItem {
         this.dueDate = dueDate;
     }
 
-    public int isDone() {
+    public boolean isDone() {
         return done;
     }
 
-    public void setDone(int done) {
+    public void setDone(boolean done) {
         this.done = done;
     }
 
