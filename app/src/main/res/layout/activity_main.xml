@@ -7,28 +7,33 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:weightSum="1"
+    app:layout_collapseParallaxMultiplier="1.0"
     tools:context="com.sargent.mark.todolist.MainActivity">
 
     <!--<Spinner-->
-        <!--android:id="@+id/spinner"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:gravity="top"-->
-        <!--android:spinnerMode="dialog" />-->
+    <!--android:id="@+id/spinner"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="top"-->
+    <!--android:spinnerMode="dialog" />-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight=".90" />
+        android:layout_weight=".90"
+        android:background="@android:color/holo_green_light"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addToDo"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight=".10"
+        android:src="@drawable/ic_add_black_48dp"
         android:text="Add Item"
-        android:src="@drawable/ic_add_black_48dp"/>
+        app:backgroundTint="@android:color/holo_purple" />
 
 
 </LinearLayout>

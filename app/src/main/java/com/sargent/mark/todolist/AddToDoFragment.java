@@ -30,7 +30,7 @@ public class AddToDoFragment extends DialogFragment{
     private DatePicker dp;
     private Button add;
     private final String TAG = "addtodofragment";
-//    private long id;
+
 
 
 
@@ -48,7 +48,6 @@ public class AddToDoFragment extends DialogFragment{
 
         View view = inflater.inflate(R.layout.fragment_to_do_adder, container, false);
         toDo = (EditText) view.findViewById(R.id.toDo);
-//        toDo2 = (EditText) view.findViewById(R.id.toDo2);
         dp = (DatePicker) view.findViewById(R.id.datePicker);
         add = (Button) view.findViewById(R.id.add);
         cb = (CheckBox) view.findViewById(R.id.cb);

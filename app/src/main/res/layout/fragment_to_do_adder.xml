@@ -8,21 +8,33 @@
     android:weightSum="1"
     tools:context=".AddToDoFragment">
 
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight=".8" />
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight=".1" />
-
+        android:layout_weight="0.08"
+        android:alwaysDrawnWithCache="false"
+        android:background="?attr/colorControlHighlight"
+        android:contextClickable="false"
+        android:popupBackground="@android:drawable/spinner_dropdown_background"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/toDo"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight=".1"
         android:layout_marginBottom="10dp"
-        android:hint="Enter To Do" />
-f
+        android:layout_weight=".1"
+        android:hint="Enter To Do"
+        android:textColor="@android:color/holo_green_dark" />
+
     <!--<EditText-->
     <!--android:id="@+id/toDo2"-->
     <!--android:layout_width="match_parent"-->
@@ -31,6 +43,7 @@ f
     <!--android:layout_marginBottom="10dp"-->
     <!--android:hint="Enter To Do2" />-->
     <!---->
+
     <CheckBox
         android:id="@+id/cb"
         android:layout_width="match_parent"
@@ -38,13 +51,13 @@ f
         android:checked="false"
         android:duplicateParentState="false"
         android:text="Done"
-        android:textSize="20dp" />
 
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight=".8" />
+        android:textSize="20sp"
+        android:gravity="left"
+        android:textColor="#FF0000"
+        android:padding="5dip"
+
+        />
 
     <Button
         android:id="@+id/add"
