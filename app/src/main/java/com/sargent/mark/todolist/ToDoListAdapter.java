@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
-
 import com.sargent.mark.todolist.data.Contract;
-import com.sargent.mark.todolist.data.ToDoItem;
 
-import java.util.ArrayList;
 
 /**
  * Created by mark on 7/4/17.
@@ -48,6 +46,10 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
     public interface ItemClickListener {
         void onItemClick(int pos, String description, String duedate, String category, long id);
+
+//        click listerner with main activity and checkbox
+//        https://stackoverflow.com/questions/21814150/check-if-any-checkbox-is-checked
+        void onCheckedChanged(long id, boolean done);
     }
 
     public ToDoListAdapter(Cursor cursor, ItemClickListener listener) {
@@ -59,7 +61,6 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         if (cursor != null) cursor.close();
         cursor = newCursor;
         if (newCursor != null) {
-            // Force the RecyclerView to refresh
             this.notifyDataSetChanged();
         }
     }
@@ -72,7 +73,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
         String duedate;
         String description;
         String category;
-        int done;
+        int doneValue;
         long id;
 
 
@@ -83,23 +84,53 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ItemHo
 
 //            creating a textview for category
             cat = (TextView) view.findViewById(R.id.category_textview);
+            cb = (CheckBox) view.findViewById(R.id.checkBox_xml);
+
+
+
+            //http://www.technotalkative.com/android-checkbox-example/
+            //https://developer.android.com/reference/android/widget/CompoundButton.OnCheckedChangeListener.html
+            //creating a boolean comparison with int because sql is an integer value
+            cb.setOnCheckedChangeListener(
+                    new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean done) {
+                            if (done == 1 > 0)
+                                doneValue = 1;
+                            else
+                                doneValue = 0;
+                            listener.onCheckedChanged(id, done);
+                        }
+                    });
             view.setOnClickListener(this);
         }
 
         public void bind(ItemHolder holder, int pos) {
+
             cursor.moveToPosition(pos);
             id = cursor.getLong(cursor.getColumnIndex(Contract.TABLE_TODO._ID));
             Log.d(TAG, "deleting id: " + id);
-
             duedate = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE));
             description = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION));
+            //binding the cursor to get the spinner
             category = cursor.getString(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_CATEGORY));
+
+            //binding the cursor for the checkbox
+            doneValue = cursor.getInt(cursor.getColumnIndex(Contract.TABLE_TODO.COLUMN_NAME_DONE));
+
             descr.setText(description);
             due.setText(duedate);
             cat.setText(category);
+
+//testing
+//            if (doneValue==1)
+//                cb.setChecked(!cb.isChecked());
+
+            //if the checkbox is changed to true
+            cb.setChecked(doneValue ==1);
+
             holder.itemView.setTag(id);
         }
-
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();

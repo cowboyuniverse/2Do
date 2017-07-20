@@ -44,20 +44,20 @@
     <!--android:hint="Enter To Do2" />-->
     <!---->
 
-    <CheckBox
-        android:id="@+id/cb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:duplicateParentState="false"
-        android:text="Done"
+    <!--<CheckBox-->
+        <!--android:id="@+id/cb"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:checked="false"-->
+        <!--android:duplicateParentState="false"-->
+        <!--android:text="Done"-->
 
-        android:textSize="20sp"
-        android:gravity="left"
-        android:textColor="#FF0000"
-        android:padding="5dip"
+        <!--android:textSize="20sp"-->
+        <!--android:gravity="left"-->
+        <!--android:textColor="#FF0000"-->
+        <!--android:padding="5dip"-->
 
-        />
+        <!--/>-->
 
     <Button
         android:id="@+id/add"

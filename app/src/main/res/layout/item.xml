@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="serif"
         android:text="To do description2"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="?android:attr/textColorHighlightInverse"
         android:textSize="20dp" />
 
@@ -48,20 +48,19 @@
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
         android:text="06-04-2017"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textColor="?android:attr/statusBarColor"
         android:textSize="18sp" />
 
     <!--from the todolist adapter-->
     <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="match_parent"
+        android:id="@+id/checkBox_xml"
+        android:layout_width="124dp"
         android:layout_height="wrap_content"
         android:checked="false"
         android:duplicateParentState="false"
-        android:gravity="bottom|left"
         android:text="Done"
-        android:textAlignment="viewStart"
+        android:layout_marginLeft="110dip"
         android:textColor="@android:color/holo_red_light"
         android:textSize="20dp" />
 
@@ -69,7 +68,7 @@
     <!--<CheckBox android:id="@+id/checkBox"-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginLeft="36dip"-->
+    <!--android:layout_marginLeft="60dip"-->
     <!--android:layout_centerVertical="true"-->
     <!--android:layout_alignParentRight="true"-->
     <!--android:focusable="false"  />-->

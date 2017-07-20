@@ -1,7 +1,6 @@
 package com.sargent.mark.todolist;
 
         import android.os.Bundle;
-        import android.support.annotation.Nullable;
         import android.support.v4.app.DialogFragment;
         import android.util.Log;
         import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ package com.sargent.mark.todolist;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
-        import android.widget.CheckBox;
+//        import android.widget.CheckBox;
         import android.widget.DatePicker;
         import android.widget.EditText;
         import android.widget.Spinner;
@@ -23,16 +22,12 @@ package com.sargent.mark.todolist;
  */
 
 public class AddToDoFragment extends DialogFragment{
-
-    private CheckBox cb;
+//    private CheckBox cb;
     private Spinner category_spinner;
     private EditText toDo;
     private DatePicker dp;
     private Button add;
     private final String TAG = "addtodofragment";
-
-
-
 
     public AddToDoFragment() {
     }
@@ -43,14 +38,11 @@ public class AddToDoFragment extends DialogFragment{
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-
         View view = inflater.inflate(R.layout.fragment_to_do_adder, container, false);
         toDo = (EditText) view.findViewById(R.id.toDo);
         dp = (DatePicker) view.findViewById(R.id.datePicker);
         add = (Button) view.findViewById(R.id.add);
-        cb = (CheckBox) view.findViewById(R.id.cb);
+//        cb = (CheckBox) view.findViewById(R.id.cb);
 
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
@@ -83,20 +75,15 @@ public class AddToDoFragment extends DialogFragment{
         });
 
 
-
         add.setText("Update");
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                UpdateToDoFragment.OnUpdateDialogCloseListener activity = (UpdateToDoFragment.OnUpdateDialogCloseListener) getActivity();
                 OnDialogCloseListener activity = (OnDialogCloseListener) getActivity();
-//                Log.d(TAG, "id: " + id);
                 activity.closeDialog(dp.getYear(), dp.getMonth(), dp.getDayOfMonth(), toDo.getText().toString(), category_spinner.getSelectedItem().toString());
                 AddToDoFragment.this.dismiss();
             }
         });
-
-
         return view;
     }
 }

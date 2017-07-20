@@ -26,8 +26,8 @@ public class DBHelper extends SQLiteOpenHelper{
                 Contract.TABLE_TODO._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Contract.TABLE_TODO.COLUMN_NAME_DESCRIPTION + " TEXT NOT NULL, " +
                 Contract.TABLE_TODO.COLUMN_NAME_DUE_DATE + " DATE, " +
-                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL " +
-//                Contract.TABLE_TODO.COLUMN_NAME_DONE + " INTEGER DEFAULT 0" +
+                Contract.TABLE_TODO.COLUMN_NAME_CATEGORY + " TEXT NOT NULL, " +
+                Contract.TABLE_TODO.COLUMN_NAME_DONE + " INTEGER DEFAULT 0" +
                 "); ";
 
         Log.d(TAG, "Create table SQL: " + queryString);
@@ -35,18 +35,14 @@ public class DBHelper extends SQLiteOpenHelper{
 
 
 //        Testing data
-        db.execSQL("INSERT into todoitems(description, duedate, category) " +
-                "values('Finish Android HW3','2017-7-19', 'School')");
-
-//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
-//                "values('Eat Ramen with Jessica','2017-1-16', 'Personal', 0)");
-//
-//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
-//                "values('Recuit Aquaman for JL ','2017-2-16', 'Work', 0)");
-//
-//
-//        db.execSQL("INSERT into todoitems(description, duedate, category) " +
-//                "values('Run with the Bulls','2017-7-16', 'Uncategorized', 0)");
+        db.execSQL("INSERT into todoitems(description, duedate, category, done) " +
+                "values('Finish Android HW3','2017-7-19', 'School', 1)");
+        db.execSQL("INSERT into todoitems(description, duedate, category, done) " +
+                "values('Eat Ramen with Jessica','2017-8-16', 'Personal', 0)");
+        db.execSQL("INSERT into todoitems(description, duedate, category, done) " +
+                "values('Recuit Aquaman for JL ','2017-9-16', 'Work', 0)");
+        db.execSQL("INSERT into todoitems(description, duedate, category, done) " +
+                "values('Run with the Bulls','2017-9-20', 'Uncategorized', 0)");
     }
 
 
